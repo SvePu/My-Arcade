@@ -60,12 +60,12 @@ if($mybb->input['action'] == "add")
 						$checked[] = (int)$gid;
 					}
 
-					$new_category['groups'] = implode(',', $checked);
+					$new_category['acgroups'] = implode(',', $checked);
 				}
 			}
 			else
 			{
-				$new_category['groups'] = '-1';
+				$new_category['acgroups'] = '-1';
 			}
 
 			$cid = $db->insert_query("arcadecategories", $new_category);
@@ -219,12 +219,12 @@ if($mybb->input['action'] == "edit")
 						$checked[] = (int)$gid;
 					}
 					
-					$updated_category['groups'] = implode(',', $checked);
+					$updated_category['acgroups'] = implode(',', $checked);
 				}
 			}
 			else
 			{
-				$updated_category['groups'] = '-1';
+				$updated_category['acgroups'] = '-1';
 			}
 
 			$db->update_query("arcadecategories", $updated_category, "cid='{$category['cid']}'");
@@ -264,9 +264,9 @@ if($mybb->input['action'] == "edit")
 		$mybb->input['image'] = $category['image'];
 		$mybb->input['active'] = $category['active'];
 
-		$mybb->input['group_1_groups'] = explode(",", $category['groups']);
+		$mybb->input['group_1_groups'] = explode(",", $category['acgroups']);
 
-		if(!$category['groups'] || $category['groups'] == -1)
+		if(!$category['acgroups'] || $category['acgroups'] == -1)
 		{
 			$group_checked[1] = "checked=\"checked\"";
 			$group_checked[2] = '';
